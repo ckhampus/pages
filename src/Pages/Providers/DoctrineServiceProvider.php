@@ -9,24 +9,34 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 
-class DoctrineServiceProvider extends ServiceProviderInterface
+class DoctrineServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)
     {
+        $app['db.default_options'] = array(
+            'driver'   => 'pdo_mysql',
+            'dbname'   => null,
+            'host'     => 'localhost',
+            'user'     => 'root',
+            'password' => null,
+        );
+
         $app['db.config'] = $app->share(function () use ($app) {
             $config = null;
 
-            if (isset($app['db.metadata']) && !empty($app['db.metadata'])) {
-                switch ($app['db.metadata']['driver']) {
+            $cache = isset($app['db.cache']) ? $app['db.cache'] : null;
+
+            if (isset($app['db.entities']) && !empty($app['db.entities'])) {
+                switch ($app['db.entities']['driver']) {
                     case 'yaml':
-                        $config = Setup::createYAMLMetadataConfiguration($app['db.metadata']['paths'], $app['debug'], $app['db.cache']);
+                        $config = Setup::createYAMLMetadataConfiguration($app['db.entities']['paths'], $app['debug'], $cache);
                         break;
                     case 'xml':
-                        $config = Setup::createXMLMetadataConfiguration($app['db.metadata']['paths'], $app['debug'], $app['db.cache']);
+                        $config = Setup::createXMLMetadataConfiguration($app['db.entities']['paths'], $app['debug'], $cache);
                         break;
                     case 'annotation':
                     default:
-                        $config = Setup::createAnnotationMetadataConfiguration($app['db.metadata']['paths'], $app['debug'], $app['db.cache']);
+                        $config = Setup::createAnnotationMetadataConfiguration($app['db.entities']['paths'], $app['debug'], $cache);
                         break;
                 }
             }

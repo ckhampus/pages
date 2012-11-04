@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "php": ">=5.3",
+        "php": ">=5.4",
         "silex/silex": "1.0.x-dev",
         "doctrine/orm": "2.3.x-dev",
         "symfony/twig-bridge": "2.2.x-dev",
@@ -18,7 +18,7 @@
         "phpunit/phpunit": "3.7.x-dev"
     },
     "autoload": {
-        "psr-0": { "Silex": "src/" }
+        "psr-0": { "Pages": "src/" }
     },
     "minimum-stability": "dev",
     "config": {

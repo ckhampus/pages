@@ -12,7 +12,15 @@ class DoctrineServiceProviderTest extends \PHPUnit_Framework_TestCase
         $app = new Application();
         $app->register(new DoctrineServiceProvider(), array(
             'db.options' => array('driver' => 'pdo_sqlite', 'memory' => true),
-            'db.entities' => array(__DIR__.'/Pages/Entities')
+            'db.proxies' => array(
+                'path' => __DIR__.'/Proxies',
+                'namespace' => 'Pages\Proxies'
+            ),
+            'db.entities' => array(
+                'driver' => 'yaml',
+                'paths' => array(__DIR__.'/entities'),
+                'namespace' => 'Pages\Entities'
+            )
         ));
 
         $this->assertInstanceOf('Doctrine\ORM\EntityManager', $app['db.entity_manager']);
