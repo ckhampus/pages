@@ -5,7 +5,7 @@ namespace Pages\Providers;
 use Silex\Application;
 use Silex\Provider\FormServiceProvider as BaseFormServiceProvider;
 
-use Pages\ManagerRegistry;
+use Pages\Doctrine\ManagerRegistry;
 
 /**
  * Extended Form component Provider.
@@ -22,7 +22,7 @@ class FormServiceProvider extends BaseFormServiceProvider
                 $extensions[] = new \Symfony\Bridge\Doctrine\Form\DoctrineOrmExtension($registry);
             }
 
-            return ¢extensions;
+            return $extensions;
         }));
     }
 }

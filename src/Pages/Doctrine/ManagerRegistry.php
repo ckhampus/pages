@@ -1,6 +1,6 @@
 <?php
 
-namespace Pages;
+namespace Pages\Doctrine;
 
 use Doctrine\Common\Persistence\ManagerRegistry as ManagerRegistryInterface,
     Doctrine\ORM\ORMException;
