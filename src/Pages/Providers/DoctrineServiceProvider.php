@@ -9,6 +9,9 @@ use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Tools\SchemaTool;
 
+/**
+ * This service provider adds support for the Doctrine ORM.
+ */
 class DoctrineServiceProvider implements ServiceProviderInterface
 {
     public function register(Application $app)

@@ -8,7 +8,8 @@ use Silex\Provider\FormServiceProvider as BaseFormServiceProvider;
 use Pages\Doctrine\ManagerRegistry;
 
 /**
- * Extended Form component Provider.
+ * Extended Form component provider which
+ * adds support for Doctrine entity forms.
  */
 class FormServiceProvider extends BaseFormServiceProvider
 {
