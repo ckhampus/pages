@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 
 class User
 {
+    use Timestamps;
+
     public static function loadMetadata(ClassMetadata $metadata)
     {
         $builder = new ClassMetadataBuilder($metadata);
