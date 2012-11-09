@@ -1,6 +1,6 @@
 <?php
 
-namespace Pages\Doctrien\Behaviours;
+namespace Pages\Doctrine\Behaviours;
 
 /**
  * Add simple versioning support.

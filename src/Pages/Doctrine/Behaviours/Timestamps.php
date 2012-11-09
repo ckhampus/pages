@@ -7,5 +7,7 @@ namespace Pages\Doctrine\Behaviours;
  */
 trait Timestamps
 {
+    private $createdAt;
 
+    private $updatedAt;
 }

@@ -2,12 +2,16 @@
 
 namespace Pages\Entities;
 
+use Pages\Doctrine\Behaviours\Timestamps;
+
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\Mapping\Builder\ClassMetadataBuilder;
 
 class User
 {
     use Timestamps;
+
+    private $id;
 
     public static function loadMetadata(ClassMetadata $metadata)
     {
@@ -16,5 +20,7 @@ class User
                 ->isPrimaryKey()
                 ->generatedValue()
                 ->build();
+
+        $builder->setCustomRepositoryClass('Pages\Repositories\UserRepository');
     }
 }
