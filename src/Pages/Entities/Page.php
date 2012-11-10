@@ -14,14 +14,14 @@ class Page
 
     private $id;
 
+    /**
+     * Get the page ID.
+     *
+     * @return integer The page ID.
+     */
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
     }
 
     public static function loadMetadata(ClassMetadata $metadata)
