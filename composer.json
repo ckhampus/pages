@@ -11,6 +11,8 @@
         "php": ">=5.4",
         "silex/silex": "1.0.x-dev",
         "doctrine/orm": "2.3.x-dev",
+        "doctrine/migrations": "*",
+        "doctrine/data-fixtures": "*",
         "symfony/console": "2.2.x-dev",
         "symfony/twig-bridge": "2.2.x-dev",
         "symfony/doctrine-bridge": "2.2.x-dev"

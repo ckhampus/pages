@@ -10,8 +10,6 @@ use Doctrine\ORM\Event\LoadClassMetadataEventArgs;
 
 class TimestampsListener implements EventSubscriber
 {
-    public $preFooInvoked = false;
-
     public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
     {
         $metadata = $eventArgs->getClassMetadata();
