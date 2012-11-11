@@ -4,6 +4,7 @@ namespace Pages;
 
 use Silex\Application as BaseApplication;
 
+use Pages\Admin\Controllers\AdminControllerProvider;
 use Pages\Provider\DoctrineServiceProvider;
 
 class Application extends BaseApplication
@@ -21,10 +22,12 @@ class Application extends BaseApplication
                 'namespace' => 'Pages\Proxies'
             ),
             'db.entities' => array(
-                'driver' => 'yaml',
-                'paths' => array(__DIR__.'/entities'),
+                'driver' => 'php',
+                'paths' => array(__DIR__.'/Entities'),
                 'namespace' => 'Pages\Entities'
             )
         ));
+
+        $this->mount('/admin', new AdminControllerProvider());
     }
 }

@@ -8,7 +8,18 @@ namespace Pages\Doctrine\Behaviours;
 trait Versioning
 {
     /**
+     * Get the current version.
+     *
+     * @return object The current version.
+     */
+    public function getCurrentVersion()
+    {
+        
+    }
+
+    /**
      * Get the previous version.
+     *
      * @return object The previous version.
      */
     public function getPreviousVersion()

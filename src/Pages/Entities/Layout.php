@@ -14,53 +14,12 @@ class Layout extends Base
 
     private $columns;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->columns = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-    
-    /**
-     * Add columns
-     *
-     * @param \Pages\Entities\Column $columns
-     * @return Layout
-     */
-    public function addColumn(\Pages\Entities\Column $columns)
-    {
-        $this->columns[] = $columns;
-    
-        return $this;
-    }
-
-    /**
-     * Remove columns
-     *
-     * @param \Pages\Entities\Column $columns
-     */
-    public function removeColumn(\Pages\Entities\Column $columns)
-    {
-        $this->columns->removeElement($columns);
-    }
-
-    /**
-     * Get columns
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getColumns()
-    {
-        return $this->columns;
-    }
-
     public static function loadMetadata(ClassMetadata $metadata)
     {
         $builder = new ClassMetadataBuilder($metadata);
 
-        $builder->createOneToMany('columns', 'Pages\Entities\Column')
-                ->mappedBy('layout')
+        $builder->createManyToMany('columns', 'Pages\Entities\Column')
+                ->mappedBy('layouts')
                 ->build();
 
         $builder->setCustomRepositoryClass('Pages\Repositories\LayoutRepository');
