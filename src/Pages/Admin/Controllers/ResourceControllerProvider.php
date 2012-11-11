@@ -48,8 +48,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     /**
      * List all resources.
      *
-     * @param  Application $app The application.
-     * @return Response|string           The response.
+     * @param  Application     $app The application.
+     * @return Response|string The response.
      */
     public function indexAction(Application $app)
     {
@@ -64,8 +64,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     /**
      * Create a new resource.
      *
-     * @param  Application $app The application.
-     * @return Response|string           The response.
+     * @param  Application     $app The application.
+     * @return Response|string The response.
      */
     public function createAction(Application $app)
     {
@@ -75,9 +75,9 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     /**
      * Show a single resource by id.
      *
-     * @param  Application $app The application.
-     * @param  object      $resource  The resource.
-     * @return Response|string           The response.
+     * @param  Application     $app      The application.
+     * @param  object          $resource The resource.
+     * @return Response|string The response.
      */
     public function showAction(Application $app, $resource)
     {
@@ -87,9 +87,9 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     /**
      * Edit a single resource by id.
      *
-     * @param  Application $app The application.
-     * @param  object      $resource  The resource.
-     * @return Response|string           The response.
+     * @param  Application     $app      The application.
+     * @param  object          $resource The resource.
+     * @return Response|string The response.
      */
     public function editAction(Application $app, $resource)
     {
@@ -99,9 +99,9 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     /**
      * Update a single resource by id.
      *
-     * @param  Application $app The application.
-     * @param  object      $resource  The resource.
-     * @return Response|string           The response.
+     * @param  Application     $app      The application.
+     * @param  object          $resource The resource.
+     * @return Response|string The response.
      */
     public function updateAction(Application $app, $resource)
     {
@@ -111,9 +111,9 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     /**
      * Delete a single resource by id.
      *
-     * @param  Application $app The application.
-     * @param  object      $resource  The resource.
-     * @return Response|string           The response.
+     * @param  Application     $app      The application.
+     * @param  object          $resource The resource.
+     * @return Response|string The response.
      */
     public function deleteAction(Application $app, $resource)
     {

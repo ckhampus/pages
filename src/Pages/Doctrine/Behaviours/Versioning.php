@@ -14,7 +14,7 @@ trait Versioning
      */
     public function getCurrentVersion()
     {
-        
+
     }
 
     /**

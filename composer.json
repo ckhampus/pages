@@ -18,7 +18,7 @@
         "symfony/doctrine-bridge": "2.2.x-dev"
     },
     "require-dev": {
-        "phpunit/phpunit": "3.7.x-dev"
+        "phpunit/phpunit": "3.7.8"
     },
     "autoload": {
         "psr-0": { "Pages": "src/" }

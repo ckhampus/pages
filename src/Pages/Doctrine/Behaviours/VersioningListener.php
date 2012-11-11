@@ -23,7 +23,7 @@ class VersioningListener implements EventSubscriber
             /*
             $builder->addField('createdAt', 'datetime');
             $builder->addField('updatedAt', 'datetime');
-            
+
             if ($metadata->reflClass->hasMethod('updateTimestamps')) {
                 $metadata->addLifecycleCallback('updateTimestamps', Events::prePersist);
                 $metadata->addLifecycleCallback('updateTimestamps', Events::preUpdate);

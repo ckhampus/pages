@@ -22,7 +22,7 @@ class TimestampsListener implements EventSubscriber
         if ($this->isEntitySupported($metadata)) {
             $builder->addField('createdAt', 'datetime');
             $builder->addField('updatedAt', 'datetime');
-            
+
             if ($metadata->reflClass->hasMethod('updateTimestamps')) {
                 $metadata->addLifecycleCallback('updateTimestamps', Events::prePersist);
                 $metadata->addLifecycleCallback('updateTimestamps', Events::preUpdate);
