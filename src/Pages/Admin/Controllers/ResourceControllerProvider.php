@@ -17,37 +17,59 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
         $entityManager = $app['db.entity_manager'];
 
         $className = $this->getResourceClass();
-        $metadata = $entityManager->getClassMetadata($className);
-        $resource = $this->getNormalizedResourceName($className);
+        $resource = $this->getNormalizedResourceName();
+
+        $singular = Inflector::singularize($resource);
+        $plural = Inflector::pluralize($resource);
+
+        // Convert passed id to an integer.
+        $idConverter = function ($id) { return (int)$id; };
 
         // Convert passed ID to entity.
-        $converter = function ($id, Request $request) use ($entityManager, $className) {
-            $id = (int) $request->get('id');
-
+        $resourceConverter = function ($resource, Request $request) use ($entityManager, $className) {
+            $id = $request->get('id');
             return $entityManager->find($className, $id);
         };
 
-        $controllers->get("/{$resource}", array($this, 'indexAction'));
+        $controllers->match("/{$plural}.{_format}",
+                    \Closure::bind(function (Application $app, Request $request) {
+                        if ($request->getMethod() === 'POST') {
+                            return $this->createAction($app, $request);
+                        }
 
-        $controllers->get("/{$resource}/new", array($this, 'newAction'));
+                        return $this->indexAction($app, $request);
+                    }, $this))
+                    ->method('GET|POST')
+                    ->value('_format', 'html')
+                    ->bind("{$plural}_path");
 
-        $controllers->post("/{$resource}", array($this, 'createAction'));
+        $controllers->match("/{$plural}/{id}.{_format}",
+                    \Closure::bind(function (Application $app, Request $request, $resource) {
+                        if ($request->getMethod() === 'PUT') {
+                            return $this->updateAction($app, $request, $resource);
+                        }
 
-        $controllers->get("/{$resource}/{id}", array($this, 'showAction'))
+                        if ($request->getMethod() === 'DELETE') {
+                            return $this->destroyAction($app, $request, $resource);
+                        }
+
+                        return $this->showAction($app, $request, $resource);
+                    }, $this))
                     ->assert('id', '\d+')
-                    ->convert('resource', $converter);
+                    ->method('GET|POST|DELETE')
+                    ->value('_format', 'html')
+                    ->convert('id', $idConverter)
+                    ->convert('resource', $resourceConverter)
+                    ->bind("{$singular}_path");
 
-        $controllers->get("/{$resource}/{id}/edit", array($this, 'editAction'))
-                    ->assert('id', '\d+')
-                    ->convert('resource', $converter);
+        $controllers->get("/{$plural}/new", array($this, 'newAction'))
+                    ->bind("new_{$singular}_path");
 
-        $controllers->put("/{$resource}/{id}", array($this, 'updateAction'))
+        $controllers->get("/{$plural}/{id}/edit", array($this, 'editAction'))
                     ->assert('id', '\d+')
-                    ->convert('resource', $converter);
-
-        $controllers->delete("/{$resource}/{id}", array($this, 'deleteAction'))
-                    ->assert('id', '\d+')
-                    ->convert('resource', $converter);
+                    ->convert('id', $idConverter)
+                    ->convert('resource', $resourceConverter)
+                    ->bind("edit_{$singular}_path");
 
         return $controllers;
     }
@@ -58,12 +80,12 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  Application     $app The application.
      * @return Response|string The response.
      */
-    public function indexAction(Application $app)
+    public function indexAction(Application $app, Request $request)
     {
         return 'Index';
     }
 
-    public function newAction(Application $app)
+    public function newAction(Application $app, Request $request)
     {
         return 'New';
     }
@@ -74,7 +96,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  Application     $app The application.
      * @return Response|string The response.
      */
-    public function createAction(Application $app)
+    public function createAction(Application $app, Request $request)
     {
         return 'Create';
     }
@@ -86,7 +108,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  object          $resource The resource.
      * @return Response|string The response.
      */
-    public function showAction(Application $app, $resource)
+    public function showAction(Application $app, Request $request, $resource)
     {
         return 'Show';
     }
@@ -98,7 +120,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  object          $resource The resource.
      * @return Response|string The response.
      */
-    public function editAction(Application $app, $resource)
+    public function editAction(Application $app, Request $request, $resource)
     {
         return 'Edit';
     }
@@ -110,7 +132,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  object          $resource The resource.
      * @return Response|string The response.
      */
-    public function updateAction(Application $app, $resource)
+    public function updateAction(Application $app, Request $request, $resource)
     {
         return 'Update';
     }
@@ -122,11 +144,16 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  object          $resource The resource.
      * @return Response|string The response.
      */
-    public function deleteAction(Application $app, $resource)
+    public function destroyAction(Application $app, Request $request, $resource)
     {
         return 'Delete';
     }
 
+    /**
+     * Return the fully qualified class name of the resource.
+     *
+     * @return string The class name.
+     */
     abstract public function getResourceClass();
 
     /**
@@ -135,10 +162,11 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      * @param  string $className The class name.
      * @return string The normalized resource name.
      */
-    public function getNormalizedResourceName($className)
+    public function getNormalizedResourceName()
     {
+        $className = $this->getResourceClass();
+
         $resource = substr($className, strrpos($className, '\\') + 1);
-        $resource = Inflector::pluralize($resource);
         $resource = strtolower($resource);
 
         return $resource;
