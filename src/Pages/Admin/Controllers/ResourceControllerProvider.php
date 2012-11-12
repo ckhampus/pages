@@ -13,9 +13,6 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
 {
     public function connect(Application $app)
     {
-        $controllers = $app['controllers_factory'];
-        $entityManager = $app['db.entity_manager'];
-
         $className = $this->getResourceClass();
         $resource = $this->getNormalizedResourceName();
 
@@ -26,11 +23,11 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
         $idConverter = function ($id) { return (int) $id; };
 
         // Convert passed ID to entity.
-        $resourceConverter = function ($resource, Request $request) use ($entityManager, $className) {
-            $id = $request->get('id');
-
-            return $entityManager->find($className, $id);
+        $resourceConverter = function ($resource, Request $request) use ($app, $className) {
+            return $app['db.entity_manager']->find($className, $request->get('id'));
         };
+
+        $controllers = $app['controllers_factory'];
 
         $controllers->match("/{$plural}.{_format}",
                     \Closure::bind(function (Application $app, Request $request) {
@@ -85,6 +82,10 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      */
     public function indexAction(Application $app, Request $request)
     {
+        $em = $app['db.entity_manager'];
+
+        $resources = $em->getRepository($this->getResourceClass())->findAll();
+
         return 'Index';
     }
 
@@ -101,6 +102,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      */
     public function createAction(Application $app, Request $request)
     {
+        $em = $app['db.entity_manager'];
+
         return 'Create';
     }
 
@@ -113,6 +116,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      */
     public function showAction(Application $app, Request $request, $resource)
     {
+        $em = $app['db.entity_manager'];
+
         return 'Show';
     }
 
@@ -125,6 +130,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      */
     public function editAction(Application $app, Request $request, $resource)
     {
+        $em = $app['db.entity_manager'];
+
         return 'Edit';
     }
 
@@ -137,6 +144,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      */
     public function updateAction(Application $app, Request $request, $resource)
     {
+        $em = $app['db.entity_manager'];
+
         return 'Update';
     }
 
@@ -149,6 +158,8 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
      */
     public function destroyAction(Application $app, Request $request, $resource)
     {
+        $em = $app['db.entity_manager'];
+
         return 'Delete';
     }
 

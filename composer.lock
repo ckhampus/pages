@@ -1,5 +1,5 @@
 {
-    "hash": "61e2052363b7ad21c52763bb778cc42a",
+    "hash": "816badb8752bb033ccd079c7425dd3fb",
     "packages": [
         {
             "name": "doctrine/common",
@@ -18,6 +18,7 @@
             "require": {
                 "php": ">=5.3.2"
             },
+            "time": "1348120518",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -67,8 +68,7 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ],
-            "time": "1348120518"
+            ]
         },
         {
             "name": "doctrine/data-fixtures",
@@ -87,6 +87,7 @@
             "require": {
                 "php": ">=5.3.2"
             },
+            "time": "1351735543",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -108,8 +109,7 @@
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
                 "database"
-            ],
-            "time": "1351735543"
+            ]
         },
         {
             "name": "doctrine/dbal",
@@ -129,6 +129,7 @@
                 "php": ">=5.3.2",
                 "doctrine/common": "2.3.*"
             },
+            "time": "1352716871",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -171,8 +172,7 @@
                 "persistence",
                 "dbal",
                 "queryobject"
-            ],
-            "time": "1352716871"
+            ]
         },
         {
             "name": "doctrine/migrations",
@@ -199,6 +199,7 @@
             "suggest": {
                 "symfony/console": "to run the migration from the console"
             },
+            "time": "1350643044",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -225,8 +226,7 @@
             "keywords": [
                 "database",
                 "migrations"
-            ],
-            "time": "1350643044"
+            ]
         },
         {
             "name": "doctrine/orm",
@@ -234,12 +234,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "d0698754b2c5ddc5e453a0b8fcdedd1ca92f9513"
+                "reference": "77d060ab74212919f1eaace72842ea43bf420f43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/d0698754b2c5ddc5e453a0b8fcdedd1ca92f9513.zip",
-                "reference": "d0698754b2c5ddc5e453a0b8fcdedd1ca92f9513",
+                "url": "https://github.com/doctrine/doctrine2/archive/77d060ab74212919f1eaace72842ea43bf420f43.zip",
+                "reference": "77d060ab74212919f1eaace72842ea43bf420f43",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "1352719977",
+            "time": "1352731781",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -315,6 +315,7 @@
             "require": {
                 "php": ">=5.3.0"
             },
+            "time": "1352622754",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -341,8 +342,7 @@
             "keywords": [
                 "dependency injection",
                 "container"
-            ],
-            "time": "1352622754"
+            ]
         },
         {
             "name": "silex/silex",
@@ -944,6 +944,7 @@
             "require": {
                 "php": ">=5.2.4"
             },
+            "time": "1352654530",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -973,8 +974,7 @@
             "homepage": "http://twig.sensiolabs.org",
             "keywords": [
                 "templating"
-            ],
-            "time": "1352654530"
+            ]
         }
     ],
     "packages-dev": [
@@ -1022,36 +1022,31 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "dev-master",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "f8bcb9100f8893511d6bdc44def82559ce18e210"
+                "reference": "1.2.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/php-code-coverage/archive/f8bcb9100f8893511d6bdc44def82559ce18e210.zip",
-                "reference": "f8bcb9100f8893511d6bdc44def82559ce18e210",
+                "url": "https://github.com/sebastianbergmann/php-code-coverage/zipball/1.2.6",
+                "reference": "1.2.6",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.7",
-                "phpunit/php-file-iterator": ">=1.3.0",
-                "phpunit/php-token-stream": ">=1.1.3",
-                "phpunit/php-text-template": ">=1.1.1"
+                "php": ">=5.3.3",
+                "phpunit/php-file-iterator": ">=1.3.0@stable",
+                "phpunit/php-token-stream": ">=1.1.3@stable",
+                "phpunit/php-text-template": ">=1.1.1@stable"
             },
             "suggest": {
                 "ext-dom": "*",
-                "ext-xdebug": ">=2.2.1"
+                "ext-xdebug": ">=2.0.5"
             },
-            "time": "1352561665",
+            "time": "2012-10-16 22:34:13",
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.3.x-dev"
-                }
-            },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "classmap": [
                     "PHP/"
@@ -1095,6 +1090,7 @@
             "require": {
                 "php": ">=5.3.3"
             },
+            "time": "1350290255",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1120,8 +1116,7 @@
             "keywords": [
                 "filesystem",
                 "iterator"
-            ],
-            "time": "1350290255"
+            ]
         },
         {
             "name": "phpunit/php-text-template",
@@ -1140,6 +1135,7 @@
             "require": {
                 "php": ">=5.3.3"
             },
+            "time": "1351707328",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1164,8 +1160,7 @@
             "homepage": "https://github.com/sebastianbergmann/php-text-template/",
             "keywords": [
                 "template"
-            ],
-            "time": "1351707328"
+            ]
         },
         {
             "name": "phpunit/php-timer",
@@ -1184,6 +1179,7 @@
             "require": {
                 "php": ">=5.3.3"
             },
+            "time": "1350290346",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1208,8 +1204,7 @@
             "homepage": "https://github.com/sebastianbergmann/php-timer/",
             "keywords": [
                 "timer"
-            ],
-            "time": "1350290346"
+            ]
         },
         {
             "name": "phpunit/php-token-stream",
@@ -1229,6 +1224,7 @@
                 "ext-tokenizer": "*",
                 "php": ">=5.3.3"
             },
+            "time": "1350290650",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1253,21 +1249,20 @@
             "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
             "keywords": [
                 "tokenizer"
-            ],
-            "time": "1350290650"
+            ]
         },
         {
             "name": "phpunit/phpunit",
-            "version": "3.7.8",
+            "version": "3.7.9",
             "source": {
                 "type": "git",
                 "url": "git://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3.7.8"
+                "reference": "3.7.9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/sebastianbergmann/phpunit/zipball/3.7.8",
-                "reference": "3.7.8",
+                "url": "https://github.com/sebastianbergmann/phpunit/archive/3.7.9.zip",
+                "reference": "3.7.9",
                 "shasum": ""
             },
             "require": {
@@ -1289,7 +1284,7 @@
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*"
             },
-            "time": "2012-10-16 22:37:08",
+            "time": "2012-11-06 19:49:38",
             "bin": [
                 "composer/bin/phpunit"
             ],
@@ -1348,6 +1343,7 @@
             "suggest": {
                 "ext-soap": "*"
             },
+            "time": "1352109898",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1378,8 +1374,7 @@
             "keywords": [
                 "mock",
                 "xunit"
-            ],
-            "time": "1352109898"
+            ]
         },
         {
             "name": "symfony/filesystem",
