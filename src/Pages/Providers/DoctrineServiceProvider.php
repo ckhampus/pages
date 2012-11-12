@@ -7,6 +7,7 @@ use Silex\ServiceProviderInterface;
 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\Mapping\Driver\StaticPHPDriver;
 
 /**
  * This service provider adds support for the Doctrine ORM.
@@ -31,14 +32,18 @@ class DoctrineServiceProvider implements ServiceProviderInterface
             if (isset($app['db.entities']) && !empty($app['db.entities'])) {
                 switch ($app['db.entities']['driver']) {
                     case 'yaml':
-                        $config = Setup::createYAMLMetadataConfiguration($app['db.entities']['paths'], $app['debug'], $cache);
+                        $config = Setup::createYAMLMetadataConfiguration($app['db.entities']['paths'], $app['debug']);
                         break;
                     case 'xml':
-                        $config = Setup::createXMLMetadataConfiguration($app['db.entities']['paths'], $app['debug'], $cache);
+                        $config = Setup::createXMLMetadataConfiguration($app['db.entities']['paths'], $app['debug']);
+                        break;
+                    case 'php':
+                        $config = Setup::createConfiguration($app['debug']);
+                        $config->setMetadataDriverImpl(new StaticPHPDriver($app['db.entities']['paths']));
                         break;
                     case 'annotation':
                     default:
-                        $config = Setup::createAnnotationMetadataConfiguration($app['db.entities']['paths'], $app['debug'], $cache);
+                        $config = Setup::createAnnotationMetadataConfiguration($app['db.entities']['paths'], $app['debug']);
                         break;
                 }
             }

@@ -6,6 +6,6 @@ class PageControllerProvider extends ResourceControllerProvider
 {
     public function getResourceClass()
     {
-        return 'Pages\Entities\Page';
+        return 'Pages\\Entities\\Page';
     }
 }

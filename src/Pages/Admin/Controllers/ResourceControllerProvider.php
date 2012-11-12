@@ -2,8 +2,12 @@
 
 namespace Pages\Admin\Controllers;
 
+use Pages\Utilities\Inflector;
+
 use Silex\Application;
 use Silex\ControllerProviderInterface;
+
+use Symfony\Component\HttpFoundation\Request;
 
 abstract class ResourceControllerProvider implements ControllerProviderInterface
 {
@@ -12,12 +16,15 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
         $controllers = $app['controllers_factory'];
         $entityManager = $app['db.entity_manager'];
 
-        $class = $this->getResourceClass();
-        $metadata = $entityManager->getClassMetadata($class);
-        $resource = $metadata->name;
+        $className = $this->getResourceClass();
+        $metadata = $entityManager->getClassMetadata($className);
+        $resource = $this->getNormalizedResourceName($className);
 
-        $converter = function ($id, Request $request) use ($entityManager, $class) {
-            return $entityManager->find($class, $id);
+        // Convert passed ID to entity.
+        $converter = function ($id, Request $request) use ($entityManager, $className) {
+            $id = (int) $request->get('id');
+
+            return $entityManager->find($className, $id);
         };
 
         $controllers->get("/{$resource}", array($this, 'indexAction'));
@@ -121,4 +128,19 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     }
 
     abstract public function getResourceClass();
+
+    /**
+     * Normalizes the resource class name.
+     *
+     * @param  string $className The class name.
+     * @return string The normalized resource name.
+     */
+    public function getNormalizedResourceName($className)
+    {
+        $resource = substr($className, strrpos($className, '\\') + 1);
+        $resource = Inflector::pluralize($resource);
+        $resource = strtolower($resource);
+
+        return $resource;
+    }
 }

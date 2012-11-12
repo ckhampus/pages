@@ -4,8 +4,8 @@ namespace Pages;
 
 use Silex\Application as BaseApplication;
 
-use Pages\Admin\Controllers\AdminControllerProvider;
-use Pages\Provider\DoctrineServiceProvider;
+use Pages\Admin\Controllers\PageControllerProvider;
+use Pages\Providers\DoctrineServiceProvider;
 
 class Application extends BaseApplication
 {
@@ -15,7 +15,8 @@ class Application extends BaseApplication
 
         $this->register(new DoctrineServiceProvider(), array(
             'db.options' => array(
-                'driver' => 'pdo_sqlite'
+                'driver' => 'pdo_sqlite',
+                'path' => __DIR__.'/../../db/app.sqlite'
             ),
             'db.proxies' => array(
                 'path' => __DIR__.'/Proxies',
@@ -28,6 +29,6 @@ class Application extends BaseApplication
             )
         ));
 
-        $this->mount('/admin', new AdminControllerProvider());
+        $this->mount('/admin', new PageControllerProvider());
     }
 }
