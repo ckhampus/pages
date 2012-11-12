@@ -40,6 +40,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
 
                         return $this->indexAction($app, $request);
                     }, $this))
+                    ->assert('_format', 'xml|json|html')
                     ->method('GET|POST')
                     ->value('_format', 'html')
                     ->bind("{$plural}_path");
@@ -57,6 +58,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
                         return $this->showAction($app, $request, $resource);
                     }, $this))
                     ->assert('id', '\d+')
+                    ->assert('_format', 'xml|json|html')
                     ->method('GET|PUT|DELETE')
                     ->value('_format', 'html')
                     ->convert('id', $idConverter)

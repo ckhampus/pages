@@ -1,5 +1,5 @@
 {
-    "hash": "c64b4d9e42280bdc14727fad3472c1b4",
+    "hash": "61e2052363b7ad21c52763bb778cc42a",
     "packages": [
         {
             "name": "doctrine/common",
@@ -18,7 +18,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "1348120518",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -68,7 +67,8 @@
                 "eventmanager",
                 "annotations",
                 "persistence"
-            ]
+            ],
+            "time": "1348120518"
         },
         {
             "name": "doctrine/data-fixtures",
@@ -87,7 +87,6 @@
             "require": {
                 "php": ">=5.3.2"
             },
-            "time": "1351735543",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -109,7 +108,8 @@
             "homepage": "http://www.doctrine-project.org",
             "keywords": [
                 "database"
-            ]
+            ],
+            "time": "1351735543"
         },
         {
             "name": "doctrine/dbal",
@@ -129,7 +129,6 @@
                 "php": ">=5.3.2",
                 "doctrine/common": "2.3.*"
             },
-            "time": "1352716871",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -172,7 +171,8 @@
                 "persistence",
                 "dbal",
                 "queryobject"
-            ]
+            ],
+            "time": "1352716871"
         },
         {
             "name": "doctrine/migrations",
@@ -199,7 +199,6 @@
             "suggest": {
                 "symfony/console": "to run the migration from the console"
             },
-            "time": "1350643044",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -226,7 +225,8 @@
             "keywords": [
                 "database",
                 "migrations"
-            ]
+            ],
+            "time": "1350643044"
         },
         {
             "name": "doctrine/orm",
@@ -234,12 +234,12 @@
             "source": {
                 "type": "git",
                 "url": "git://github.com/doctrine/doctrine2.git",
-                "reference": "c6eb04de145b986d968be1ddb0e0a43cd8110b8e"
+                "reference": "d0698754b2c5ddc5e453a0b8fcdedd1ca92f9513"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/doctrine/doctrine2/archive/c6eb04de145b986d968be1ddb0e0a43cd8110b8e.zip",
-                "reference": "c6eb04de145b986d968be1ddb0e0a43cd8110b8e",
+                "url": "https://github.com/doctrine/doctrine2/archive/d0698754b2c5ddc5e453a0b8fcdedd1ca92f9513.zip",
+                "reference": "d0698754b2c5ddc5e453a0b8fcdedd1ca92f9513",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
             "suggest": {
                 "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
             },
-            "time": "1352495804",
+            "time": "1352719977",
             "bin": [
                 "bin/doctrine",
                 "bin/doctrine.php"
@@ -315,7 +315,6 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "1352622754",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -342,7 +341,8 @@
             "keywords": [
                 "dependency injection",
                 "container"
-            ]
+            ],
+            "time": "1352622754"
         },
         {
             "name": "silex/silex",
@@ -422,6 +422,61 @@
             "keywords": [
                 "microframework"
             ]
+        },
+        {
+            "name": "symfony/browser-kit",
+            "version": "2.1.x-dev",
+            "target-dir": "Symfony/Component/BrowserKit",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/BrowserKit",
+                "reference": "eff7eff62a8bccbe7998ecbde4d612bb8da963ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/BrowserKit/archive/eff7eff62a8bccbe7998ecbde4d612bb8da963ff.zip",
+                "reference": "eff7eff62a8bccbe7998ecbde4d612bb8da963ff",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3",
+                "symfony/dom-crawler": "2.1.*"
+            },
+            "require-dev": {
+                "symfony/process": "2.1.*",
+                "symfony/css-selector": "2.1.*"
+            },
+            "suggest": {
+                "symfony/process": "2.1.*"
+            },
+            "time": "1352368308",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\BrowserKit": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony BrowserKit Component",
+            "homepage": "http://symfony.com"
         },
         {
             "name": "symfony/console",
@@ -523,6 +578,59 @@
                 }
             ],
             "description": "Symfony Doctrine Bridge",
+            "homepage": "http://symfony.com"
+        },
+        {
+            "name": "symfony/dom-crawler",
+            "version": "2.1.x-dev",
+            "target-dir": "Symfony/Component/DomCrawler",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/DomCrawler",
+                "reference": "8fe81036d0f7452c2bf75b6d489f1e646741bf0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/DomCrawler/archive/8fe81036d0f7452c2bf75b6d489f1e646741bf0f.zip",
+                "reference": "8fe81036d0f7452c2bf75b6d489f1e646741bf0f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "symfony/css-selector": "2.1.*"
+            },
+            "suggest": {
+                "symfony/css-selector": "2.1.*"
+            },
+            "time": "1352368308",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\DomCrawler": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony DomCrawler Component",
             "homepage": "http://symfony.com"
         },
         {
@@ -636,12 +744,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/HttpKernel",
-                "reference": "0571e0d0327a963a6494ef501d5aa4d954e3df92"
+                "reference": "7dcb495971685c70968fb22bf04ee9809c439352"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/HttpKernel/archive/0571e0d0327a963a6494ef501d5aa4d954e3df92.zip",
-                "reference": "0571e0d0327a963a6494ef501d5aa4d954e3df92",
+                "url": "https://github.com/symfony/HttpKernel/archive/7dcb495971685c70968fb22bf04ee9809c439352.zip",
+                "reference": "7dcb495971685c70968fb22bf04ee9809c439352",
                 "shasum": ""
             },
             "require": {
@@ -668,7 +776,7 @@
                 "symfony/dependency-injection": "2.2.*",
                 "symfony/finder": "2.2.*"
             },
-            "time": "1352712629",
+            "time": "1352727042",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -704,12 +812,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Routing",
-                "reference": "00001c0db3f4d95dd14db3c516bd4de51049f58e"
+                "reference": "8fdb2e2a1dcd3b58e187b95a301e2ebe021ea013"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Routing/archive/00001c0db3f4d95dd14db3c516bd4de51049f58e.zip",
-                "reference": "00001c0db3f4d95dd14db3c516bd4de51049f58e",
+                "url": "https://github.com/symfony/Routing/archive/8fdb2e2a1dcd3b58e187b95a301e2ebe021ea013.zip",
+                "reference": "8fdb2e2a1dcd3b58e187b95a301e2ebe021ea013",
                 "shasum": ""
             },
             "require": {
@@ -726,7 +834,7 @@
                 "symfony/config": "2.2.*",
                 "symfony/yaml": "2.2.*"
             },
-            "time": "1352713749",
+            "time": "1352722009",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -836,7 +944,6 @@
             "require": {
                 "php": ">=5.2.4"
             },
-            "time": "1352654530",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -866,7 +973,8 @@
             "homepage": "http://twig.sensiolabs.org",
             "keywords": [
                 "templating"
-            ]
+            ],
+            "time": "1352654530"
         }
     ],
     "packages-dev": [
@@ -987,7 +1095,6 @@
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "1350290255",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1013,7 +1120,8 @@
             "keywords": [
                 "filesystem",
                 "iterator"
-            ]
+            ],
+            "time": "1350290255"
         },
         {
             "name": "phpunit/php-text-template",
@@ -1032,7 +1140,6 @@
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "1351707328",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1057,7 +1164,8 @@
             "homepage": "https://github.com/sebastianbergmann/php-text-template/",
             "keywords": [
                 "template"
-            ]
+            ],
+            "time": "1351707328"
         },
         {
             "name": "phpunit/php-timer",
@@ -1076,7 +1184,6 @@
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "1350290346",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1101,7 +1208,8 @@
             "homepage": "https://github.com/sebastianbergmann/php-timer/",
             "keywords": [
                 "timer"
-            ]
+            ],
+            "time": "1350290346"
         },
         {
             "name": "phpunit/php-token-stream",
@@ -1121,7 +1229,6 @@
                 "ext-tokenizer": "*",
                 "php": ">=5.3.3"
             },
-            "time": "1350290650",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -1146,7 +1253,8 @@
             "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
             "keywords": [
                 "tokenizer"
-            ]
+            ],
+            "time": "1350290650"
         },
         {
             "name": "phpunit/phpunit",
@@ -1240,7 +1348,6 @@
             "suggest": {
                 "ext-soap": "*"
             },
-            "time": "1352109898",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1271,7 +1378,8 @@
             "keywords": [
                 "mock",
                 "xunit"
-            ]
+            ],
+            "time": "1352109898"
         },
         {
             "name": "symfony/filesystem",
@@ -1422,6 +1530,7 @@
     "stability-flags": {
         "silex/silex": 20,
         "doctrine/orm": 20,
+        "symfony/browser-kit": 20,
         "symfony/console": 20,
         "symfony/twig-bridge": 20,
         "symfony/doctrine-bridge": 20

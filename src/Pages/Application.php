@@ -4,7 +4,10 @@ namespace Pages;
 
 use Silex\Application as BaseApplication;
 
+use Pages\Admin\Controllers\ColumnControllerProvider;
+use Pages\Admin\Controllers\LayoutControllerProvider;
 use Pages\Admin\Controllers\PageControllerProvider;
+use Pages\Admin\Controllers\UserControllerProvider;
 use Pages\Providers\DoctrineServiceProvider;
 
 class Application extends BaseApplication
@@ -29,6 +32,9 @@ class Application extends BaseApplication
             )
         ));
 
+        $this->mount('/admin', new ColumnControllerProvider());
+        $this->mount('/admin', new LayoutControllerProvider());
         $this->mount('/admin', new PageControllerProvider());
+        $this->mount('/admin', new UserControllerProvider());
     }
 }
