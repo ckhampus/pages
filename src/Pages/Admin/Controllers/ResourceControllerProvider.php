@@ -8,6 +8,7 @@ use Silex\Application;
 use Silex\ControllerProviderInterface;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class ResourceControllerProvider implements ControllerProviderInterface
 {
@@ -39,7 +40,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
                     }, $this))
                     ->assert('_format', 'xml|json|html')
                     ->method('GET|POST')
-                    ->value('_format', 'html')
+                    ->value('_format', 'json')
                     ->bind("{$plural}_path");
 
         $controllers->match("/{$plural}/{id}.{_format}",
@@ -57,7 +58,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
                     ->assert('id', '\d+')
                     ->assert('_format', 'xml|json|html')
                     ->method('GET|PUT|DELETE')
-                    ->value('_format', 'html')
+                    ->value('_format', 'json')
                     ->convert('id', $idConverter)
                     ->convert('resource', $resourceConverter)
                     ->bind("{$singular}_path");
@@ -86,8 +87,11 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
         $em = $app['db.entity_manager'];
 
         $resources = $em->getRepository($this->getResourceClass())->findAll();
+        $format = $request->getRequestFormat();
 
-        return 'Index';
+        return new Response($app['serializer']->serialize($resources, $format), 200, [
+            'Content-Type' => $request->getMimeType($format)
+        ]);
     }
 
     public function newAction(Application $app, Request $request)
@@ -120,6 +124,10 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
     public function showAction(Application $app, Request $request, $resource)
     {
         $em = $app['db.entity_manager'];
+
+        if ($resource === null) {
+            return $app->abort(404, "Resource does not exist");
+        }
 
         return 'Show';
     }

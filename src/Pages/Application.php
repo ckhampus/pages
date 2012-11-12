@@ -3,6 +3,7 @@
 namespace Pages;
 
 use Silex\Application as BaseApplication;
+use Silex\Provider\SerializerServiceProvider;
 
 use Pages\Admin\Controllers\ColumnControllerProvider;
 use Pages\Admin\Controllers\LayoutControllerProvider;
@@ -15,6 +16,8 @@ class Application extends BaseApplication
     public function __construct()
     {
         parent::__construct();
+
+        $this->register(new SerializerServiceProvider());
 
         $this->register(new DoctrineServiceProvider(), array(
             'db.options' => array(

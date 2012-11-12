@@ -15,6 +15,7 @@
         "doctrine/data-fixtures": "*",
         "symfony/browser-kit": "2.1.x-dev",
         "symfony/console": "2.1.x-dev",
+        "symfony/serializer": "2.1.x-dev",
         "symfony/twig-bridge": "2.1.x-dev",
         "symfony/doctrine-bridge": "2.1.x-dev"
     },

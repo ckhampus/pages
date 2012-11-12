@@ -1,5 +1,5 @@
 {
-    "hash": "816badb8752bb033ccd079c7425dd3fb",
+    "hash": "bee2e50dc697453ccd1ee0ba7f3c1ba4",
     "packages": [
         {
             "name": "doctrine/common",
@@ -864,6 +864,53 @@
             "homepage": "http://symfony.com"
         },
         {
+            "name": "symfony/serializer",
+            "version": "2.1.x-dev",
+            "target-dir": "Symfony/Component/Serializer",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Serializer",
+                "reference": "81122e3fb2082d06b788e292ee85c7b98224b364"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/symfony/Serializer/archive/81122e3fb2082d06b788e292ee85c7b98224b364.zip",
+                "reference": "81122e3fb2082d06b788e292ee85c7b98224b364",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "time": "1352368308",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.1-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Serializer": ""
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Serializer Component",
+            "homepage": "http://symfony.com"
+        },
+        {
             "name": "symfony/twig-bridge",
             "version": "2.1.x-dev",
             "target-dir": "Symfony/Bridge/Twig",
@@ -1527,6 +1574,7 @@
         "doctrine/orm": 20,
         "symfony/browser-kit": 20,
         "symfony/console": 20,
+        "symfony/serializer": 20,
         "symfony/twig-bridge": 20,
         "symfony/doctrine-bridge": 20
     }
