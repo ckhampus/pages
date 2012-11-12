@@ -23,11 +23,12 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
         $plural = Inflector::pluralize($resource);
 
         // Convert passed id to an integer.
-        $idConverter = function ($id) { return (int)$id; };
+        $idConverter = function ($id) { return (int) $id; };
 
         // Convert passed ID to entity.
         $resourceConverter = function ($resource, Request $request) use ($entityManager, $className) {
             $id = $request->get('id');
+
             return $entityManager->find($className, $id);
         };
 
@@ -56,7 +57,7 @@ abstract class ResourceControllerProvider implements ControllerProviderInterface
                         return $this->showAction($app, $request, $resource);
                     }, $this))
                     ->assert('id', '\d+')
-                    ->method('GET|POST|DELETE')
+                    ->method('GET|PUT|DELETE')
                     ->value('_format', 'html')
                     ->convert('id', $idConverter)
                     ->convert('resource', $resourceConverter)
