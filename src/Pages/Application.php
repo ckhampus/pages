@@ -35,8 +35,6 @@ class Application extends BaseApplication
             )
         ));
 
-        $this->mount('/admin', new ColumnControllerProvider());
-        $this->mount('/admin', new LayoutControllerProvider());
         $this->mount('/admin', new PageControllerProvider());
         $this->mount('/admin', new UserControllerProvider());
     }

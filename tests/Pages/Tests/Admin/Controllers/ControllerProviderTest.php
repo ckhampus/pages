@@ -20,8 +20,6 @@ class ControllerProviderTest extends WebTestCase
     public function dataResources()
     {
         return [
-            ['columns'],
-            ['layouts'],
             ['pages'],
             ['users']
         ];

@@ -12,9 +12,16 @@ class Page extends Base
 {
     use Timestamps, Versioning;
 
+    private $title;
+
+    private $slug;
+
     public static function loadMetadata(ClassMetadata $metadata)
     {
         $builder = new ClassMetadataBuilder($metadata);
+
+        $builder->addField('title', 'string');
+        $builder->addField('slug', 'string');
 
         $builder->setCustomRepositoryClass('Pages\Repositories\PageRepository');
     }
