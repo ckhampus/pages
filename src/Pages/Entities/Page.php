@@ -24,5 +24,9 @@ class Page extends Base
         $builder->addField('slug', 'string');
 
         $builder->setCustomRepositoryClass('Pages\Repositories\PageRepository');
+
+        $builder->setJoinedTableInheritance();
+        $builder->setDiscriminatorColumn('type');
+        $builder->addDiscriminatorMapClass('page', __CLASS__);
     }
 }
